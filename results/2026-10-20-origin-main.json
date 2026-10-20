@@ -1,0 +1,32 @@
+{
+  "measured_at": "2026-10-20",
+  "livekit_agents_commit": "d4cc4a941",
+  "watch_seconds": 75.0,
+  "server": "accepts the websocket upgrade, then sends nothing and answers no pings",
+  "plugins": [
+    {"plugin": "smallestai",  "result": "raised",          "seconds": 46.4, "heartbeat": true,  "note": "ServerTimeoutError: no PONG"},
+    {"plugin": "telnyx",      "result": "raised",          "seconds": 46.9, "heartbeat": true,  "note": "ServerTimeoutError: no PONG"},
+    {"plugin": "deepgram",    "result": "raised",          "seconds": 47.0, "heartbeat": true,  "note": "ServerTimeoutError: no PONG"},
+    {"plugin": "soniox",      "result": "detected_not_propagated", "detected_seconds": 46.3, "seconds": null, "heartbeat": true,  "note": "logs the error frame, requests a reconnect, connects again 3ms later, repeats"},
+    {"plugin": "simplismart", "result": "detected_not_propagated", "detected_seconds": 50.6, "seconds": null, "heartbeat": true,  "note": "logs 'connection lost', never raises"},
+    {"plugin": "assemblyai",  "result": "never_noticed",   "seconds": null, "heartbeat": false, "note": "open PR livekit/agents#7547"},
+    {"plugin": "baseten",     "result": "never_noticed",   "seconds": null, "heartbeat": false, "note": "5s wait_for on receive, but the handler continues"},
+    {"plugin": "elevenlabs",  "result": "never_noticed",   "seconds": null, "heartbeat": false, "note": "open PR livekit/agents#7913"},
+    {"plugin": "fireworksai", "result": "never_noticed",   "seconds": null, "heartbeat": false, "note": "5s wait_for on receive, but the handler continues"},
+    {"plugin": "gladia",      "result": "never_noticed",   "seconds": null, "heartbeat": false, "note": "streaming connect; the batch connect is bounded by ClientWSTimeout"},
+    {"plugin": "gradium",     "result": "never_noticed",   "seconds": null, "heartbeat": false, "note": "5s wait_for on receive, but the handler continues"},
+    {"plugin": "inworld",     "result": "never_noticed",   "seconds": null, "heartbeat": false, "note": "open PR livekit/agents#7913"},
+    {"plugin": "openai",      "result": "never_noticed",   "seconds": null, "heartbeat": false, "note": "realtime STT; open PR livekit/agents#7913"},
+    {"plugin": "meta",        "result": "unmeasured",      "heartbeat": true,  "why": "the constructor requires an absolute wss:// url, so it cannot be pointed at a local plaintext server"},
+    {"plugin": "microsoft-ai","result": "unmeasured",      "heartbeat": true,  "why": "no endpoint override in the public constructor"},
+    {"plugin": "nabrah",      "result": "unmeasured",      "heartbeat": false, "why": "no endpoint override in the public constructor"},
+    {"plugin": "sarvam",      "result": "unmeasured",      "heartbeat": "mixed", "why": "the local session handshake answers 403; stt_streaming.py passes a heartbeat, stt.py does not"},
+    {"plugin": "slng",        "result": "unmeasured",      "heartbeat": false, "why": "endpoint validation rejected every local shape tried"},
+    {"plugin": "xai",         "result": "unmeasured",      "heartbeat": true,  "why": "no endpoint override in the public constructor"}
+  ],
+  "after_fixes": [
+    {"plugin": "baseten",     "before": null, "after": 48.1, "pr": "livekit/agents#7943"},
+    {"plugin": "fireworksai", "before": null, "after": 47.0, "pr": "livekit/agents#7943"},
+    {"plugin": "gradium",     "before": null, "after": 47.0, "pr": "livekit/agents#7943"}
+  ]
+}
